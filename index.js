@@ -31,6 +31,15 @@ function Automata(states, transitions, accept_states, start_state) {
             throw new Error("Not every state is a string");
         }
     });
+    states.sort((a, b) => {
+        if (a < b) {
+            return -1;
+        }
+        if (a === b) {
+            throw new Error("States have been defined multiple times");
+        }
+        return 1;
+    });
     transitions.forEach(transition => {
         if (!Array.isArray(transition)) {
             throw new Error("Not every transition is an array");
@@ -45,6 +54,20 @@ function Automata(states, transitions, accept_states, start_state) {
             throw new Error("Not every transition's transitional token is a function");
         }
     });
+    transitions.sort((a, b) => {
+        if (a[0] < b[0]) {
+            return -1;
+        }
+        if (a[0] === b[0]) {
+            if (a[1] < b[1]) {
+                return -1;
+            }
+            if (a[1] === b[1]) {
+                throw new Error("Not every transition");
+            }
+        }
+        return 1;
+    })
     accept_states.forEach(state => {
         if (typeof state !== "string") {
             throw new Error("Not every accept_state is a string");
