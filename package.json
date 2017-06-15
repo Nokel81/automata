@@ -1,0 +1,23 @@
+{
+  "name": "function-automata",
+  "version": "1.0.0",
+  "description": "This is a package for creating and using finite automita",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Nokel81/function-automata.git"
+  },
+  "keywords": [
+    "dfa",
+    "automata"
+  ],
+  "author": "Sebastian Malton",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Nokel81/function-automata/issues"
+  },
+  "homepage": "https://github.com/Nokel81/function-automata#readme"
+}
