@@ -6,11 +6,12 @@ const State = require('./state');
  * @param       {Array~Array}  transitions   The list of valid transitions
  *     @member {transition}
  *     @type   {Array~Mixed}
- *     @param  {String}      index_0 The name of the state which will be the origin of the transition
- *     @param  {String}      index_1 The name of the state which will be the destination of the transition
- *     @param  {function}    index_2 The accept function for a given token to take this transition
+ *     @param  {String}      index_0            The name of the state which will be the origin of the transition
+ *     @param  {String}      index_1            The name of the state which will be the destination of the transition
+ *     @param  {function}    index_2            The accept function for a given token to take this transition
  *         @function {index_2}
  *         @param    {String}  token The token to be checked and if correct will the transition will be taken
+ *         @param    {Object}  state The automata state object that can be used to store counters and check their values later
  *         @return   {Boolean}       Weather or not the token is accepted
  * @param       {Array~String} accept_states The list of accept states
  * @param       {String}       start_state   The name of the state to start the automata
@@ -50,8 +51,8 @@ function Automata(states, transitions, accept_states, start_state) {
         if (states.indexOf(transition[0]) < 0 || states.indexOf(transition[1]) < 0) {
             throw new Error("Not every transition's states are valid");
         }
-        if (typeof transition[2] !== "function" || transition[2].length !== 1) {
-            throw new Error("Not every transition's transitional token is a function");
+        if (typeof transition[2] !== "function" || (transition[2].length != 1 || transition[2].length != 2)) {
+            throw new Error("Not every transition's transitional token is a function with the correct number of parameters");
         }
     });
     transitions.sort((a, b) => {
@@ -63,7 +64,7 @@ function Automata(states, transitions, accept_states, start_state) {
                 return -1;
             }
             if (a[1] === b[1]) {
-                throw new Error("Not every transition");
+                throw new Error("Not every transition is a unique arrow");
             }
         }
         return 1;
