@@ -30,7 +30,7 @@ This is the name of the state which will be first used to make transitions. Star
 
 ### validate
 ```javascript
-automata.validate(tokens, callback);
+automata.validate(tokens, callback, state);
 ```
 
 ###### tokens
@@ -38,6 +38,9 @@ This is an array of tokens to be validated. All empty strings or elements that a
 
 ###### callback
 This function is used to return the results back to the user. The function should have the following signature.
+
+###### state {optional}
+If you wish to retrieve the state machine's final state object then pass in a named object variable. This can be useful if you are using the state machine for parsing.
 
 ```javascript
 function callback(isValid, error)
