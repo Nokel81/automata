@@ -19,8 +19,8 @@ This is an array of arrays of the following format:
 1. {String} - name of the state that this transition will originate from
 2. {String} - name of the state that is the destination of the transition
 3. {function} - the function that determines if this transition is followed. The parameters are as follows:
- 1. token {String} - the next token to be analysed
- 2. state {Object} - the state machine data object. Here can be stored information that help with matching things like brackets
+  * token {String} - the next token to be analysed
+  * state {Object} - the state machine data object. Here can be stored information that help with matching things like brackets
 
 ###### accept_states
 This is an array of state names that count as accept states or if the machine ends on one of these then the matching is correct
