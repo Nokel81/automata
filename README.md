@@ -1,5 +1,5 @@
 # function-automata
-This is a NodeJS Finite Automata package.
+This is a NodeJS Finite Automata package. This package supports CF-DFAs and CS-DFAs. However, all accept states must be context free (which does not reduce the size of parsable languages). This package is a 0-look ahead state machine.
 
 ```javascript
 const Automata = require('function-automata');
