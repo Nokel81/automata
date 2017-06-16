@@ -37,7 +37,7 @@ function Automata(states, transitions, accept_states, start_state) {
             return -1;
         }
         if (a === b) {
-            throw new Error("States have been defined multiple times");
+            throw new Error("States have been defined multiple times: " + a);
         }
         return 1;
     });
@@ -64,7 +64,7 @@ function Automata(states, transitions, accept_states, start_state) {
                 return -1;
             }
             if (a[1] === b[1]) {
-                throw new Error("Not every transition is a unique arrow");
+                throw new Error("Not every transition is a unique arrow: " + a[1] + " -> " + b[1]);
             }
         }
         return 1;
