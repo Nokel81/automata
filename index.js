@@ -63,7 +63,7 @@ function Automata(states, transitions, accept_states, start_state) {
             if (a[1] < b[1]) {
                 return -1;
             }
-            if (a[1] === b[1]) {
+            if (a[1] === b[1] && Object.is(a, b)) {
                 throw new Error("Not every transition is a unique arrow: " + a[1] + " -> " + b[1]);
             }
         }
