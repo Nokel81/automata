@@ -24,10 +24,11 @@ _.setUpTransitions = function (states, transitions) {
 
 /**
  * The function tries to transition to the next state given the last token in the list and the defined transitions on this state
- * @param  {Array}    tokens List of tokens (in reverse order)
- * @param  {Function} cb     The function that is used to send back success or failure to the caller
+ * @param {Array}    tokens List of tokens (in reverse order)
+ * @param {Function} cb     The function that is used to send back success or failure to the caller
+ * @param {Object}   state  This is the state object that will be used for storing context sensitive data
  */
-_.transition = function (tokens, cb, state = {}) {
+_.transition = function (tokens, cb, state) {
     let token = tokens.pop();
     if (token == null) {
         if (this.isAccept) {

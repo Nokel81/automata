@@ -89,14 +89,15 @@ var _ = Automata.prototype;
 
 /**
  * This function goes through the provided tokens to check if they are valid according to the dfa
- * @param  {Array}   tokens This is a list of tokens in forward order
- * @param  {Function} cb     The function used to pass information back to caller
+ * @param {Array}    tokens This is a list of tokens in forward order
+ * @param {Function} cb     The function used to pass information back to caller
  *     @function {cb}
  *     @param    {Boolean} isValid            Whether or not the list of tokens is valid by the DFA
  *     @param    {String}  error   {optional} This error string on why the validation is false
+ * @param {Object}   state {optional} This is the state object for context sensitive data. If you don't want to use it then don't pass in a variable yourself
  */
-_.validate = function (tokens, cb) {
-    this.start.transition(tokens.reverse(), cb);
+_.validate = function (tokens, cb, state = {}) {
+    this.start.transition(tokens.reverse(), cb, state);
 };
 
 module.exports = Automata;
