@@ -51,7 +51,7 @@ function Automata(states, transitions, accept_states, start_state) {
         if (states.indexOf(transition[0]) < 0 || states.indexOf(transition[1]) < 0) {
             throw new Error("Not every transition's states are valid");
         }
-        if (typeof transition[2] !== "function" || (transition[2].length != 1 || transition[2].length != 2)) {
+        if (typeof transition[2] !== "function" || (transition[2].length != 1 && transition[2].length != 2)) {
             throw new Error("Not every transition's transitional token is a function with the correct number of parameters");
         }
     });
