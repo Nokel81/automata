@@ -27,7 +27,7 @@ _.setUpTransitions = function (states, transitions) {
  * @param  {Array}    tokens List of tokens (in reverse order)
  * @param  {Function} cb     The function that is used to send back success or failure to the caller
  */
-_.transition = function (tokens, cb) {
+_.transition = function (tokens, cb, state = {}) {
     let token = tokens.pop();
     if (token == null) {
         if (this.isAccept) {
@@ -36,8 +36,8 @@ _.transition = function (tokens, cb) {
         return cb(false, "Ended on " + this.name + " which is not an accept_state");
     }
     if (!this.transitions.some(transition => {
-        if (transition.fn(token)) {
-            transition.next.transition(tokens, cb);
+        if (transition.fn(token, state)) {
+            transition.next.transition(tokens, cb, state);
             return true;
         }
         return false;
